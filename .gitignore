@@ -1,0 +1,9 @@
+node_modules
+*.log
+.env
+.cache
+dist
+build
+backend/stock.db
+backend/stock.db-journal
+.DS_Store
