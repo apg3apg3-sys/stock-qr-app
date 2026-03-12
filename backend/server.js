@@ -89,6 +89,15 @@ app.get('/api/export', (req, res) => {
     });
 });
 
+// Servir archivos estáticos del frontend construido (Para producción/Render)
+const distPath = path.join(__dirname, '../stock-qr-app/dist');
+app.use(express.static(distPath));
+
+// Cualquier otra ruta que no sea /api, que sirva el index.html de React (SPA)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
+});
+
 app.listen(PORT, () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
+    console.log(`Backend server running on port ${PORT}`);
 });
